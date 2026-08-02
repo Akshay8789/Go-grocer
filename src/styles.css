@@ -1,0 +1,1167 @@
+/* _______________________________________________________..-Body-..___________________________________________________*/
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  scrollbar-width: none;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+
+html::-webkit-scrollbar {
+  width: 0px;
+}
+html::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+h5 {
+  color: white;
+}
+.animatecart {
+  transform: rotate(-8deg) scale(1.2);
+}
+.bgimg {
+  height: 500px;
+}
+.cartselect {
+  outline: 1px solid white;
+  width: 50%;
+  min-width: 200px;
+  margin-left: 4%;
+}
+#loginselect {
+  outline: 1px solid white;
+  display: block;
+  width: 78%;
+  margin-left: 60px;
+}
+.display {
+  display: none;
+}
+
+/* _______________________________________________________..-Navbar-..___________________________________________________*/
+.topnav {
+  background: rgb(68, 184, 76);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  z-index: 2;
+  padding: 0px 50px;
+}
+.navbrand {
+  font-size: 35px;
+  margin-right: 20vw;
+  text-decoration: none;
+  color: #f2f2f2;
+}
+.navbrand:hover {
+  margin-right: 20vw;
+  text-decoration: none;
+  color: #f2f2f2;
+}
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 17px;
+  font-family: "Montserrat", sans-serif;
+}
+.navicon {
+  height: 20px;
+  margin: 5px 10px;
+}
+#searchicon {
+  height: 20px;
+  opacity: 50%;
+}
+.search-bar {
+  padding: 5px 5vw;
+  border-radius: 10px 0px 0px 10px;
+  background-color: rgba(255, 255, 255, 0.462);
+  font-family: "Montserrat", sans-serif;
+  color: white !important;
+  font-weight: 500;
+  outline: none;
+  border: none;
+}
+.search-barbutton {
+  padding: 5px 10px;
+  border-radius: 0px 10px 10px 0px;
+  background-color: rgba(255, 255, 255, 0.462);
+  font-family: "Montserrat", sans-serif;
+  color: white !important;
+  font-weight: 500;
+  outline: none;
+  border: none;
+}
+.search-bar:focus {
+  outline: none;
+}
+.search-bar::placeholder {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+.search-bar:focus {
+  caret-color: white;
+}
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+@media screen and (max-width: 1200px) {
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .search-bar {
+    width: 145px;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the 
+  user clicks on the icon. This class makes the topnav look good on small
+   screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 1200px) {
+  .topnav.responsive {
+    display: block;
+    flex-direction: column;
+    margin-top: 0px;
+    align-items: flex-start;
+    padding-left: 30px;
+  }
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 40px;
+    top: 10px;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+    font-size: 14px;
+  }
+}
+/* _______________________________________________________..-Main section-.._____________________________________________*/
+
+.bannersec {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-image: url("./images/bg.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+}
+.banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .veggiesbanner {
+    scale: 0.8;
+  }
+  .adimageholder {
+    scale: 0.8;
+  }
+}
+@media screen and (max-width: 700px) {
+  .navbrand {
+    font-size: 25px;
+  }
+  .textfooter {
+    font-size: 12px !important;
+  }
+  .homepagecard {
+    scale: 0.75;
+  }
+}
+@media screen and (max-width: 375px) {
+  .veggiesbanner {
+    scale: 0.6;
+  }
+  .navbrand {
+    font-size: 15px;
+    position: relative;
+    right: 20px;
+  }
+  #bannerhome {
+    position: relative;
+    bottom: 100px;
+  }
+  .bannerholder {
+    height: 450px;
+  }
+  .footertext form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .emailbutton {
+    width: 80%;
+  }
+  .suscribebox {
+    width: 80% !important;
+    margin-bottom: 10px;
+  }
+  .brandtext {
+    font-size: 25px;
+  }
+}
+.veggiesbanner {
+  height: 480px;
+  width: 1200px;
+  margin-top: 80px;
+  margin: 5px 0px 10px;
+}
+.adimagediv {
+  margin-top: 10px;
+  background-image: url("./images/bg.png");
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+}
+/* _______________________________________________________..-footer-..___________________________________________________*/
+.footer {
+  background-color: rgba(201, 201, 201, 0.7);
+  padding: 5%;
+  margin-top: 10px;
+}
+.icongroup {
+  text-align: center;
+  display: block;
+}
+.footerrow {
+  padding: 0 12% 0 12%;
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+}
+.ficon {
+  padding: 2% 5% 2% 5%;
+}
+.brandtext {
+  color: white;
+  padding-left: 10%;
+  padding-right: 10%;
+  text-shadow: 2px 2px 4px gray;
+  text-align: center;
+}
+.emailbutton {
+  width: 100;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: #40c04b;
+}
+.suscribebox {
+  min-width: 200px;
+  width: 25%;
+  background-color: #f0f0f5;
+  height: 40px;
+  border: none;
+  padding-left: 20px;
+  padding-right: 30px;
+  margin-right: 10px;
+  outline: none;
+}
+.footertext form {
+  display: flex;
+  justify-content: center;
+}
+/* _______________________________________________________..-card-..___________________________________________________*/
+.cardshome {
+  padding: 20px 30px;
+  margin: 0px 0px;
+  background-color: rgb(68, 184, 76);
+  color: rgb(59, 54, 54);
+}
+.cardimg {
+  height: 100px;
+  width: 100px;
+  border-radius: 40%;
+  padding-bottom: 5px;
+}
+.homepagecard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.cardimg:hover {
+  height: 95px;
+  width: 95px;
+}
+.cardtext {
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(209, 244, 187);
+  font-weight: 500;
+}
+.cartsec {
+  margin-top: 110px;
+  background-image: url("./images/bg.png");
+  height: 500px;
+  width: 100%;
+}
+.loginsec {
+  margin-top: 110px;
+  background-image: url("./images/bg.png");
+  height: 500px;
+  width: 100%;
+}
+/* _______________________________________________________..-vegetables-..___________________________________________________*/
+.vegetablessec {
+  margin-top: 10px;
+  background-image: url("./images/bg.png");
+  /* padding-top: 20px;
+  padding-bottom: 20px; */
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
+.cardsproduct {
+  background-color: rgba(145, 240, 90, 0.253);
+  padding-bottom: 50px;
+  min-height: 750px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.cardtextproduct {
+  color: black;
+  text-align: center;
+  font-weight: 600;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: rgb(236, 242, 238);
+  font-size: small;
+  outline: 0.5px solid rgb(226, 226, 226);
+}
+.cardbg {
+  height: 250px;
+  padding-left: 45px;
+  padding-right: 45px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+.cardimgproduct {
+  height: 90px;
+  padding-top: 20px;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.imgdiv {
+  margin: 0px;
+  height: 100px;
+  border-radius: 5%;
+  background-color: white;
+  outline: 0.5px solid rgb(220, 220, 220);
+}
+.productaddtocart {
+  background-color: rgb(241, 255, 244);
+  border-color: rgba(0, 188, 41, 0.707);
+  width: 20%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  padding-right: 3%;
+  min-width: 50px;
+  float: right;
+  margin: 10px 10px 0px 0px;
+  border-radius: 15%;
+  color: rgb(0, 128, 28);
+  font-weight: 600;
+  font-size: small;
+}
+.productaddtocart:hover {
+  background-color: #ebfbdd;
+  box-shadow: 2px 2px 2px 2px rgba(132, 134, 132, 0.2),
+    2px 2px 2px 2px rgba(132, 134, 132, 0.2);
+}
+.productaddtocart:active,
+.productaddtocart:focus {
+  outline: none;
+}
+.infodev {
+  background-color: rgb(255, 255, 255);
+  min-height: 60px;
+  border-radius: 5%;
+  position: relative;
+  bottom: 10px;
+  outline: 0.5px solid rgb(212, 212, 212);
+}
+.productprice {
+  padding: 15px 0px 0px 15px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+}
+
+/* _______________________________________________________..-Login-..___________________________________________________*/
+.title {
+  font-size: 35px;
+  margin-right: 20vw;
+  text-decoration: none;
+  color: #f2f2f2;
+}
+.login {
+  margin: auto;
+  width: 450px;
+  background-color: #e3ffc9;
+  height: 100%;
+  padding-bottom: 40px;
+  margin-top: 20px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navbrandlogin {
+  font-size: 35px;
+  margin-right: 20vw;
+  text-decoration: none;
+  color: #f2f2f2;
+}
+.navbrandlogin:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+}
+@media screen and (max-width: 500px) {
+  .login {
+    width: 90%;
+    border-radius: 15px;
+  }
+  .login button {
+    width: 200px;
+  }
+  .loginform input {
+    margin: 5px 0px;
+    height: 30px;
+    width: 200px;
+    font-size: small;
+  }
+  #list {
+    font-size: 10px;
+    margin: 20px auto;
+  }
+}
+.headinglogin {
+  margin-top: 20px;
+  color: #40c04b;
+  font-weight: 600;
+}
+.loginline {
+  background-color: rgba(65, 65, 65, 0.327);
+  height: 0.1px;
+  width: 200px;
+  margin: 8px;
+}
+.loginform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+}
+.loginform input {
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  margin: 10px 0px;
+  height: 40px;
+  padding: 0px 15% 0 5%;
+}
+.loginbutton {
+  background-color: #40c04b;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  width: 250px;
+  height: 50px;
+  padding: 10px 0px;
+  margin-top: 30px;
+}
+#google {
+  background-color: white;
+  color: #40c04b;
+  font-weight: 500;
+}
+#google:focus {
+  outline: none;
+}
+#line {
+  margin-top: 50px;
+  margin-bottom: 0px;
+}
+.createacc {
+  color: #40c04b;
+  font-weight: 500;
+  padding-top: 15px;
+  margin: 0px;
+  text-decoration: none;
+}
+.createacc:hover {
+  text-decoration: none;
+  color: #40c04b;
+}
+/* _______________________________________________________..-cart-..___________________________________________________*/
+.sidepanel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding-top: 100px;
+  padding-left: 20px;
+  width: 25%;
+  min-height: 72%;
+  background-color: hsla(95, 100%, 98%, 0.903);
+}
+@media screen and (max-width: 1100px) {
+  .sidepanel {
+    position: static;
+    width: 100%;
+    padding-bottom: 50px;
+    padding-top: 0px;
+    padding-left: 0px !important;
+  }
+  .cartheading {
+    width: 100% !important;
+    right: 0px !important;
+    padding-right: 0px !important;
+  }
+  .sidepanel p {
+    padding-left: 20px;
+  }
+  .checkoutbutton {
+    margin-left: 20px;
+  }
+}
+.checkoutbutton :focus {
+  outline: none;
+  border: none;
+}
+@media print {
+  #downloadpdf {
+    display: none;
+  }
+}
+.cartheading {
+  color: #e7fbe5;
+  width: 106%;
+  font-weight: 600;
+  background-color: #40c04b;
+  padding-top: 25px;
+  padding-bottom: 5%;
+  padding-right: 20px;
+  margin-bottom: 60px;
+  text-align: center;
+  position: relative;
+  right: 20px;
+}
+.cartpaneltext {
+  font-size: 0.975em;
+  padding-right: 0.3em;
+}
+#coupon {
+  width: 55%;
+  position: relative;
+  bottom: 0.5em;
+}
+.box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.cartbuttons {
+  background-color: rgb(241, 255, 244);
+  border-color: rgba(0, 188, 41, 0.882);
+  width: 15%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-right: 3%;
+  min-width: 30px;
+  float: right;
+  margin: 6px 6px 0px 0px;
+  border-radius: 15%;
+  color: rgb(0, 128, 28);
+  font-weight: 600;
+  font-size: small;
+}
+.cartbuttons:hover {
+  background-color: #ebfbdd;
+  box-shadow: 1px 1px 1px 1px rgba(132, 134, 132, 0.2),
+    1px 1px 1px 21x rgba(132, 134, 132, 0.2);
+}
+.cartbuttons:focus {
+  outline: none;
+}
+.checkoutbutton {
+  width: 200px;
+  border: none;
+  padding: 10px 10px;
+  margin-bottom: 30px;
+  background-color: #40c04b;
+  border-radius: 10px;
+  font-weight: 500;
+  color: white;
+  border: none;
+}
+.cartwarning {
+  margin: 30px 0px 0px 60px;
+  color: rgb(78, 91, 109);
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0px;
+}
+.cartwarning img {
+  height: 60px;
+  margin: 0px 30px 0px 0px;
+  float: left;
+}
+/* _______________________________________________________..-dashboard-..___________________________________________________*/
+.dashboardcards {
+  background-color: rgba(250, 250, 250, 0.327);
+  width: 100%;
+  padding: 10px 40px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+#dashboardsec {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  min-height: 90vh !important;
+}
+.dashboardcard {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  border-radius: 10px;
+  border: solid rgba(94, 94, 94, 0.3) 0.1px;
+  margin: 25px;
+  font-size: 15px;
+  background-color: white;
+  cursor: pointer;
+}
+.dashboardcard:hover {
+  cursor: pointer;
+  scale: 1.03;
+  box-shadow: 0 0 10px rgba(118, 118, 118, 0.2);
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+#dashboardcardtext {
+  color: black;
+  font-weight: 500;
+  text-align: left;
+}
+.cardimgdashboard {
+  width: 80px;
+  height: 80px;
+  margin-right: 30px;
+}
+#logoutbutton {
+  background-color: white;
+  border: solid rgb(171, 171, 171) 0.2px;
+  color: rgb(176, 57, 57);
+  padding: 5px 10px !important;
+  border-radius: 20px !important;
+  width: 150px;
+  float: right;
+}
+#logouticon {
+  width: 50px;
+  margin-right: 10px;
+}
+@media screen and (max-width: 380px) {
+  .cartwarning {
+    flex-direction: column;
+    scale: 0.8;
+    width: 280px !important;
+  }
+  .cartwarning img {
+    margin: 20px 0px 40px 0px !important;
+  }
+  .cartwarning h4 {
+    text-align: left;
+    padding-left: 20px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .dashboardcard {
+    position: relative;
+    right: 30px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .dashboardcard {
+    right: 45px;
+  }
+  #setaddress {
+    position: relative;
+    right: 30px;
+  }
+  #ordersummarytable {
+    position: relative;
+    right: 30px;
+  }
+}
+/* _______________________________________________________..-contactus-..___________________________________________________*/
+#contentquery {
+  width: clamp(250px, 60%, 900px);
+  height: 100%;
+  padding-bottom: 150px;
+  padding-top: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: solid rgb(173, 173, 173) 0.5px;
+  overflow-x: hidden;
+  background-color: #c1c1c11f;
+}
+#contentquery:focus {
+  border: solid rgb(173, 173, 173) 0.5px !important;
+  outline: none !important;
+}
+.contactus {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: #dbdbdb;
+  border-radius: 3px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+@media screen and (max-width: 375px) {
+  .contactus {
+    margin-top: 150px;
+    padding-left: 0px;
+  }
+  #contactusbutton {
+    scale: 0.75;
+  }
+  #contactussec {
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .dashboardcard {
+    /* height: 100px !important; */
+  }
+}
+/* _______________________________________________________..-addresses-..___________________________________________________*/
+.addressinput {
+  display: flex;
+  flex-direction: row;
+}
+#state {
+  height: 30px;
+  width: 200px;
+  margin-left: 30px;
+  margin-right: 0px;
+}
+#statelabel {
+  margin-left: 30px;
+}
+#phonenumber {
+  width: clamp(100px, 80%, 500px);
+  margin-left: 30px;
+}
+.address {
+  background-color: rgba(235, 235, 235, 0.371) !important;
+  width: 35%;
+  min-width: 500px;
+  margin-left: 40px;
+  padding-left: 30px;
+  border: solid 2px rgb(212, 212, 212);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(118, 118, 118, 0.384);
+}
+.address input {
+  border: solid 0.5px rgb(175, 175, 175);
+  border-radius: 5px;
+}
+.address input:focus {
+  outline: none;
+}
+.address select {
+  border: solid 0.5px rgb(175, 175, 175);
+  border-radius: 5px;
+}
+#addressbutton {
+  background-color: #40c04b;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  width: 150px;
+  height: 40px;
+  padding: 0px 0px;
+  margin-top: 30px;
+}
+@media screen and (max-width: 620px) {
+  .addressinput {
+    flex-direction: column;
+  }
+  #phonenumber {
+    margin-left: 0px;
+    width: 200px;
+  }
+  #statelabel {
+    margin-left: 0px;
+  }
+  #state {
+    margin-left: 0px;
+  }
+  .address {
+    min-width: 280px !important;
+  }
+  #addressbutton {
+    margin: 10px auto;
+    scale: 0.8;
+  }
+  .cartwarning h4 {
+    font-size: 16px;
+    margin: 0px auto;
+  }
+}
+@media screen and (max-width: 420px) {
+  .address {
+    min-width: 280px !important;
+    scale: 0.8;
+    margin: 0px;
+    justify-self: center;
+  }
+}
+@media screen and (max-width: 320px) {
+  #addresscard {
+    width: 250px !important;
+  }
+}
+#addresscard p {
+  margin: 0px;
+}
+#addresscard {
+  margin: 20px;
+  display: block !important;
+  cursor: default;
+}
+#addresscardsec {
+  margin-bottom: 90px;
+}
+/* _______________________________________________________..-contact us-..___________________________________________________*/
+#comingsoon {
+  display: flex;
+  justify-content: center;
+}
+.transition-image {
+  width: 60%; /* Initial size */
+  transition: width 3s ease; /* Transition property: width, duration: 3s, easing function: ease */
+}
+/* _______________________________________________________..-checkout-..___________________________________________________*/
+.checkoutsec {
+  min-height: 70vh;
+  height: 100% !important;
+  background-image: url("./images/bg.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#checkoutsec {
+  min-height: 70vh;
+  height: 100% !important;
+}
+.checkoutheadings {
+  margin: 5px 0px 5px 15px;
+  color: rgb(96, 96, 96);
+  font-size: 18px;
+  margin: 20px 0px 10px 25px;
+}
+.radiobuttoncheckout {
+  float: right;
+  border-radius: 10px;
+  height: 15px;
+  width: 15px;
+  border: 0.5px solid rgb(75, 75, 75);
+}
+.selected {
+  outline: none !important;
+  border: 0.5px solid rgb(122, 122, 122) !important;
+  background-color: #40c04b8b;
+}
+.detailscard {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-left: 20px;
+}
+#indexcard {
+  width: 30px;
+}
+.detailscard div {
+  width: 30%;
+  min-width: 70px;
+  border: 0.5px solid rgb(101, 101, 101);
+  padding: 3px 0px 3px 5px;
+}
+.ordersummary {
+  margin-left: 20px;
+}
+#ordersummarydiv {
+  width: 20%;
+}
+.tablecheckout {
+  margin-left: 20px;
+}
+.tablecheckout td {
+  width: 30%;
+  padding: 5px 10px;
+}
+.tablecheckout #index {
+  width: 30px;
+}
+.tablecheckout th {
+  width: 30%;
+  padding: 5px 10px;
+}
+.tablecheckout #index {
+  width: 30px;
+}
+#ordersummarytable {
+  margin-bottom: 40px;
+}
+/* _______________________________________________________..-checkout-..___________________________________________________*/
+.order {
+  width: 650px;
+  height: 250px;
+  background-color: rgb(245, 255, 246);
+  border-radius: 10px;
+  margin: 20px 30px 20px 30px;
+  padding: 10px;
+  outline: 0.5px solid rgb(155, 155, 155);
+}
+.orderid {
+  float: right;
+  font-size: 15px;
+  margin: 10px 10px;
+}
+/* _______________________________________________________..-orders-..___________________________________________________*/
+.imageorderdiv {
+  display: flex;
+  align-items: center;
+  width: 600px;
+  overflow-x: auto;
+  margin: 10px 10px 30px 10px;
+  background-color: rgb(255, 255, 255);
+  padding-bottom: 15px;
+}
+.imageorderdiv::-webkit-scrollbar {
+  height: 5px;
+}
+.imageorderdiv::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0);
+}
+
+.imageorderdiv::-webkit-scrollbar-thumb {
+  height: 5px;
+  background-color: #d2d2d2;
+}
+
+.imageorderdiv::-webkit-scrollbar-thumb:hover {
+  background-color: #b2b2b2;
+}
+
+.imageorderdiv::-webkit-scrollbar:vertical {
+  display: none;
+}
+.imageorder {
+  height: 80px;
+}
+.ordertime {
+}
+.orderdetailbtn {
+}
+.ordertextdiv {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  gap: 250px;
+}
+.orderindicator {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(237, 237, 237);
+}
+.orderindicatortab {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  background-color: #f0f5f0;
+  box-shadow: 0 5px 5px rgba(118, 118, 118, 0.2);
+}
+.orderindicator :hover {
+  scale: 1.05;
+}
+.orderbutton {
+  background-color: #40c04b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0px 0px 10px 20px;
+}
+@media screen and (max-width: 500px) {
+  .buttondiv {
+    display: flex;
+    justify-content: center;
+  }
+  .orderbutton {
+    margin: 10px;
+    position: relative;
+    bottom: 20px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .ordersdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .order {
+    width: 75vw;
+  }
+  .imageorderdiv {
+    width: 65vw;
+  }
+  .ordertextdiv {
+    gap: 25vw !important;
+  }
+}
+@media screen and (max-width: 500px) {
+  .ordertextdiv {
+    gap: 15vw !important;
+  }
+  .imageorder {
+    height: 60px;
+  }
+  .imageorderdiv {
+    margin-top: 40px;
+  }
+  .ordertime {
+    font-size: 13px;
+  }
+  .orderdetailbtn {
+    font-size: 13px;
+  }
+  .orderid {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .ordertextdiv {
+    gap: 10vw !important;
+  }
+  .imageorderdiv {
+    margin-top: 40px;
+  }
+  .imageorder {
+    height: 45px;
+  }
+  .ordertime {
+    font-size: 11px;
+  }
+  .orderdetailbtn {
+    font-size: 11px;
+    position: relative;
+    left: 4px;
+  }
+  .orderid {
+    font-size: 11px;
+  }
+  .orderlink {
+    height: 8px !important;
+    width: 8px !important;
+    margin: 0px;
+  }
+}
+/* _______________________________________________________..-order page-..___________________________________________________*/
+.orderdetailtab {
+}
+@media screen and (max-width: 500px) {
+  .orderdetailtab td {
+    font-size: 13px;
+  }
+  .orderdetailtab td {
+    margin-left: 20px;
+  }
+}
+@media screen and (max-width: 420px) {
+  .checkoutheadings {
+    font-size: 15px;
+    margin: 5px auto;
+    position: relative;
+    right: 5px;
+  }
+}
