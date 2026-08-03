@@ -1,6 +1,12 @@
 {
-  "name": "gogrocers",
+  "name": "go-grocer",
   "version": "0.1.0",
+  "description": "GoGrocers - Premium Grocery E-commerce Application by Akshay Rajput",
+  "author": "Akshay Rajput <akshayrajput.8789@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Akshay8789/Go-grocer.git"
+  },
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",

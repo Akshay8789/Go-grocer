@@ -1,7 +1,7 @@
 # GoGrocers
-### [Live Site](https://gogrocers.vercel.app/)
+### [Repository](https://github.com/Akshay8789/Go-grocer)
 
-![image](https://github.com/VAbhijith2003github/gogrocers/assets/119759593/f2e3a903-a421-4bf1-8b23-1fea58ca107b)
+![image](https://github.com/Akshay8789/Go-grocer/assets/119759593/f2e3a903-a421-4bf1-8b23-1fea58ca107b)
 
 ## Description
 GoGrocers is a dynamic e-commerce website dedicated to groceries, built using React.js for the frontend and Firestore database for real-time data updates. The website's design and structure draw inspiration from extensive research on various grocery delivery platforms.
@@ -42,4 +42,6 @@ feel free to contact : <br>
 <a href="mailto:akshayrajput.8789@gmail.com">akshayrajput.8789@gmail.com</a><br>
 <img src="https://cdn-icons-png.flaticon.com/128/174/174857.png" width="20" height="20">
 <a href="https://www.linkedin.com/in/akshay-rajput-302121279">Akshay Rajput</a><br>  
+<img src="https://cdn-icons-png.flaticon.com/128/25/25231.png" width="20" height="20">
+<a href="https://github.com/Akshay8789">GitHub</a><br>
 </div>
