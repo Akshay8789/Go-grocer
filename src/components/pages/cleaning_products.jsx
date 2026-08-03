@@ -106,10 +106,10 @@ function Cleaning_products() {
         >
           © Copyright 2023 GoGrocers || Created by{" "}
           <a
-            href="https://github.com/VAbhijith2003github?tab=repositories"
+            href="https://github.com/Akshay8789?tab=repositories"
             style={{ color: "palevioletred" }}
           >
-            Abhijith
+            Akshay Rajput
           </a>
         </p>
       </div>
