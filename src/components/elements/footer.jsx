@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Footer() {
+  const [subscribeEmail, setSubscribeEmail] = useState("");
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (!subscribeEmail || subscribeEmail.trim() === "") {
+      toast.warning("Please enter a valid email address", {
+        position: "top-right",
+        autoClose: 4000,
+        theme: "colored",
+      });
+      return;
+    }
+    toast.success("Thank you for subscribing to GoGrocers newsletter!", {
+      position: "top-right",
+      autoClose: 5000,
+      theme: "colored",
+    });
+    setSubscribeEmail("");
+  };
+
   const Mailto = () => {
     var email = "akshayrajput.8789@gmail.com";
     var subject = "Newsletter";
@@ -14,17 +36,20 @@ function Footer() {
       "&body=" +
       encodeURIComponent(body);
   };
+
   return (
     <div className="footer">
       <div className="footertext">
         <h3 className="brandtext" style={{ fontSize: "24px", marginBottom: "20px" }}>
           SUBSCRIBE TO NEWSLETTER FOR EXCLUSIVE OFFERS!
         </h3>
-        <form action="/" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <form onSubmit={handleSubscribe} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
           <input
             type="email"
-            className="suscribebox"
+            className="subscribebox"
             name="email"
+            value={subscribeEmail}
+            onChange={(e) => setSubscribeEmail(e.target.value)}
             autoComplete="on"
             placeholder="Enter your email@org.com"
             id="emailinputbox"
@@ -76,6 +101,18 @@ function Footer() {
           Akshay Rajput
         </a>
       </p>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }

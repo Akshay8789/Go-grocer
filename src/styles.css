@@ -335,6 +335,7 @@ h5 {
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(34, 197, 94, 0.4);
 }
+.subscribebox,
 .suscribebox {
   min-width: 220px;
   width: 30%;
@@ -350,6 +351,7 @@ h5 {
   color: #1f2937;
   transition: all 0.3s ease;
 }
+.subscribebox:focus,
 .suscribebox:focus {
   background-color: #ffffff;
   box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
