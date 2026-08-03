@@ -39,7 +39,7 @@ Open to reviews and suggestions from fellow developers
 feel free to contact : <br>
 <div style="float: right;">
 <img src="https://cdn-icons-png.flaticon.com/128/552/552486.png" width="20" height="20">
-<a href="mailto:vabhijith2003@gmail.com">vabhijith2003@gmail.com</a><br>
+<a href="mailto:akshayrajput.8789@gmail.com">akshayrajput.8789@gmail.com</a><br>
 <img src="https://cdn-icons-png.flaticon.com/128/174/174857.png" width="20" height="20">
-<a href="https://www.linkedin.com/in/v-abhijith-1a6592226/">V Abhijith</a><br>  
+<a href="https://www.linkedin.com/in/akshay-rajput-302121279">Akshay Rajput</a><br>  
 </div>
