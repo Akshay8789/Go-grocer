@@ -26,6 +26,8 @@ function Login() {
     password: "",
   });
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -143,49 +145,94 @@ function Login() {
   };
 
   return (
-    <div>
-      <div style={{ height: "80px", backgroundColor: "rgb(68, 184, 76)" }}>
-        <Link to="/" className="navbrandlogin" id="loginlogo">
-          <h2
-            className="Title"
-            style={{ paddingTop: "15px", paddingLeft: "75px" }}
-          >
-            GoGrocers
-          </h2>
+    <div className="auth-wrapper">
+      <nav className="auth-nav">
+        <Link to="/" className="auth-brand" id="loginlogo">
+          <div className="auth-brand-logo">
+            <i className="fas fa-shopping-basket"></i>
+          </div>
+          <h2 className="auth-brand-title">GoGrocers</h2>
         </Link>
-      </div>
-      <div className="login containery">
-        <h1 className="headinglogin">LOGIN</h1>
-        <hr className="loginline" />
-        <form className="loginform" onSubmit={handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="your_email@org.com"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-          <button className="loginbutton" type="submit">
-            Login
+        <Link to="/" className="auth-nav-link">
+          <i className="fas fa-arrow-left"></i> Home
+        </Link>
+      </nav>
+
+      <main className="auth-main">
+        <div className="auth-card">
+          <div className="auth-header">
+            <span className="auth-badge">
+              <i className="fas fa-leaf"></i> Organic & Fresh
+            </span>
+            <h1 className="auth-title">Welcome Back</h1>
+            <p className="auth-subtitle">Sign in to manage your grocery orders & savings</p>
+          </div>
+
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <div className="auth-field">
+              <label className="auth-label">Email Address</label>
+              <div className="auth-input-wrapper">
+                <i className="fas fa-envelope auth-input-icon"></i>
+                <input
+                  type="email"
+                  name="email"
+                  className="auth-input"
+                  placeholder="your_email@org.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="auth-field">
+              <label className="auth-label">Password</label>
+              <div className="auth-input-wrapper">
+                <i className="fas fa-lock auth-input-icon"></i>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className="auth-input"
+                  placeholder="Enter your password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+                <button
+                  type="button"
+                  className="auth-password-toggle"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label="Toggle password visibility"
+                >
+                  <i className={`fas ${showPassword ? "fa-eye-slash" : "fa-eye"}`}></i>
+                </button>
+              </div>
+            </div>
+
+            <button className="auth-submit-btn" type="submit">
+              <span>Sign In</span>
+              <i className="fas fa-arrow-right"></i>
+            </button>
+          </form>
+
+          <div className="auth-divider">
+            <span>Or continue with</span>
+          </div>
+
+          <button className="auth-google-btn" id="google" onClick={Loginwithgoogle}>
+            <i className="fab fa-google" style={{ color: "#ea4335" }}></i>
+            <span>Sign in with Google</span>
           </button>
-        </form>
-        <hr className="loginline" id="line" />
-        <button className="loginbutton" id="google" onClick={Loginwithgoogle}>
-          <i class="fab fa-google icon" style={{ paddingRight: "10px" }}></i>
-          Sign in with Google
-        </button>
-        <Link to="/signup" className="createacc">
-          create an account ?
-        </Link>
-        <div></div>
-      </div>
+
+          <div className="auth-footer">
+            Don't have an account?
+            <Link to="/signup" className="auth-footer-link">
+              Create an account
+            </Link>
+          </div>
+        </div>
+      </main>
+
       <ToastContainer
         position="top-center"
         autoClose={10000}

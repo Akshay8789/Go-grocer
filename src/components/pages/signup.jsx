@@ -30,6 +30,9 @@ function SignUp() {
     repassword: "",
   });
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRepassword, setShowRepassword] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -178,56 +181,118 @@ function SignUp() {
   };
 
   return (
-    <div>
-      <div style={{ height: "80px", backgroundColor: "rgb(68, 184, 76)" }}>
-        <Link to="/" className="navbrandlogin" id="loginlogo">
-          <h2
-            className="Title"
-            style={{ paddingTop: "15px", paddingLeft: "15px" }}
-          >
-            GoGrocers
-          </h2>
+    <div className="auth-wrapper">
+      <nav className="auth-nav">
+        <Link to="/" className="auth-brand" id="loginlogo">
+          <div className="auth-brand-logo">
+            <i className="fas fa-shopping-basket"></i>
+          </div>
+          <h2 className="auth-brand-title">GoGrocers</h2>
         </Link>
-      </div>
-      <div className="login containery">
-        <h1 className="headinglogin">SIGN UP</h1>
-        <hr className="loginline" />
-        <form className="loginform" onSubmit={handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="your_email@org.com"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-          <input
-            type="password"
-            name="repassword"
-            placeholder="re-enter password"
-            value={formData.repassword}
-            onChange={handleChange}
-          />
-          <button className="loginbutton" type="submit">
-            Signup
+        <Link to="/" className="auth-nav-link">
+          <i className="fas fa-arrow-left"></i> Home
+        </Link>
+      </nav>
+
+      <main className="auth-main">
+        <div className="auth-card">
+          <div className="auth-header">
+            <span className="auth-badge">
+              <i className="fas fa-user-plus"></i> Join GoGrocers
+            </span>
+            <h1 className="auth-title">Create Account</h1>
+            <p className="auth-subtitle">Sign up to start shopping fresh groceries today</p>
+          </div>
+
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <div className="auth-field">
+              <label className="auth-label">Email Address</label>
+              <div className="auth-input-wrapper">
+                <i className="fas fa-envelope auth-input-icon"></i>
+                <input
+                  type="email"
+                  name="email"
+                  className="auth-input"
+                  placeholder="your_email@org.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="auth-field">
+              <label className="auth-label">Password</label>
+              <div className="auth-input-wrapper">
+                <i className="fas fa-lock auth-input-icon"></i>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className="auth-input"
+                  placeholder="Create a password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+                <button
+                  type="button"
+                  className="auth-password-toggle"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label="Toggle password visibility"
+                >
+                  <i className={`fas ${showPassword ? "fa-eye-slash" : "fa-eye"}`}></i>
+                </button>
+              </div>
+            </div>
+
+            <div className="auth-field">
+              <label className="auth-label">Confirm Password</label>
+              <div className="auth-input-wrapper">
+                <i className="fas fa-shield-alt auth-input-icon"></i>
+                <input
+                  type={showRepassword ? "text" : "password"}
+                  name="repassword"
+                  className="auth-input"
+                  placeholder="Re-enter your password"
+                  value={formData.repassword}
+                  onChange={handleChange}
+                  required
+                />
+                <button
+                  type="button"
+                  className="auth-password-toggle"
+                  onClick={() => setShowRepassword(!showRepassword)}
+                  aria-label="Toggle confirm password visibility"
+                >
+                  <i className={`fas ${showRepassword ? "fa-eye-slash" : "fa-eye"}`}></i>
+                </button>
+              </div>
+            </div>
+
+            <button className="auth-submit-btn" type="submit">
+              <span>Sign Up</span>
+              <i className="fas fa-arrow-right"></i>
+            </button>
+          </form>
+
+          <div className="auth-divider">
+            <span>Or continue with</span>
+          </div>
+
+          <button className="auth-google-btn" id="google" onClick={Loginwithgoogle}>
+            <i className="fab fa-google" style={{ color: "#ea4335" }}></i>
+            <span>Sign in with Google</span>
           </button>
-        </form>
-        <hr className="loginline" id="line" />
-        <button className="loginbutton" id="google" onClick={Loginwithgoogle}>
-          <i class="fab fa-google icon" style={{ paddingRight: "10px" }}></i>
-          Sign in with Google
-        </button>
-        <Link to="/login" className="createacc">
-          Have an account ?
-        </Link>
-        <div></div>
-      </div>
+
+          <div className="auth-footer">
+            Already have an account?
+            <Link to="/login" className="auth-footer-link">
+              Sign In
+            </Link>
+          </div>
+        </div>
+      </main>
+
       <ToastContainer
         position="top-center"
         autoClose={10000}
