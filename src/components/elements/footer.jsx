@@ -3,7 +3,7 @@ import "../../styles.css";
 
 function Footer() {
   const Mailto = () => {
-    var email = "vabhijith2003@gmail.com";
+    var email = "akshayrajput.8789@gmail.com";
     var subject = "Newsletter";
     var body = "I want to be notified of new offers coming up.";
     window.location.href =
