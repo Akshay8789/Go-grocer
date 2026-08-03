@@ -57,7 +57,7 @@ const Cart = () => {
   useEffect(() => {
     const uid = localStorage.getItem("uid");
     const fetchUserData = async () => {
-      if (localStorage.getItem("authenticated" === "true")) {
+      if (localStorage.getItem("authenticated") === "true") {
         try {
           console.log(uid);
           const userdetails = await GetUser(uid);
@@ -77,7 +77,7 @@ const Cart = () => {
       }
     };
     fetchUserData();
-  }, [cart, setcart]);
+  }, [setcart]);
 
  function handleClick()
   {
