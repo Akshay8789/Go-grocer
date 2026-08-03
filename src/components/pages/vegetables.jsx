@@ -5,6 +5,8 @@ import Navbar from "../elements/navbar";
 import vegetables from "../../images/vegetable images/vegimg";
 import { MyContext } from "../../App";
 
+import Footer from "../elements/footer.jsx";
+
 function Vegetables() {
   const { cart, updatecart, updatecartdec } = useContext(MyContext);
 
@@ -15,7 +17,17 @@ function Vegetables() {
   return (
     <div className="vegetables">
       <Navbar />
-      <section className="vegetablessec">
+      <div style={{ padding: "30px 5% 10px", textAlign: "center" }}>
+        <span className="auth-badge" style={{ fontSize: "13px", padding: "6px 16px" }}>
+          <i className="fas fa-carrot"></i> 100% Farm Fresh
+        </span>
+        <h1 style={{ fontSize: "36px", fontWeight: "800", color: "#14532d", marginTop: "8px" }}>
+          Fresh Vegetables
+        </h1>
+        <p style={{ color: "#4b5563", fontSize: "15px" }}>Handpicked organic vegetables delivered straight from local farms</p>
+      </div>
+
+      <section className="vegetablessec" style={{ padding: "20px 5%" }}>
         <section className="cardsproduct">
           <div className="row">
             {vegetables.map((vegetable, index) => (
@@ -27,37 +39,33 @@ function Vegetables() {
                   <img
                     className="cardimgproduct"
                     src={vegetable.src}
-                    alt="pic"
+                    alt={vegetable.name}
                   />
                 </div>
                 <p className="cardtextproduct">{vegetable.name}</p>
-                <div className="infodev">
+                <div className="infodev" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", marginTop: "12px" }}>
                   {isItemInCart(vegetable.name) ? (
-                    // Display + and - buttons if the item is in the cart
-                    <>
+                    <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                       <button
                         className="cartbuttons"
-                        style={{ scale: "0.8" }}
-                        onClick={() => updatecart(vegetable)}
-                      >
-                        +
-                      </button>
-                      <button className="cartbuttons" style={{ scale: "0.8" }}>
-                        {
-                          cart.find((item) => item.name === vegetable.name)
-                            ?.frequency
-                        }
-                      </button>
-                      <button
-                        className="cartbuttons"
-                        style={{ scale: "0.8" }}
                         onClick={() => updatecartdec(vegetable)}
                       >
                         -
                       </button>
-                    </>
+                      <span style={{ fontWeight: "700", padding: "0 6px" }}>
+                        {
+                          cart.find((item) => item.name === vegetable.name)
+                            ?.frequency
+                        }
+                      </span>
+                      <button
+                        className="cartbuttons"
+                        onClick={() => updatecart(vegetable)}
+                      >
+                        +
+                      </button>
+                    </div>
                   ) : (
-                    // Display ADD button if the item is not in the cart
                     <button
                       className="productaddtocart"
                       onClick={() => {
@@ -80,43 +88,14 @@ function Vegetables() {
                       ADD
                     </button>
                   )}
-                  <h4 className="productprice">{vegetable.price}</h4>
+                  <h4 className="productprice" style={{ margin: 0, fontWeight: "800", color: "#16a34a" }}>{vegetable.price}</h4>
                 </div>
               </div>
             ))}
           </div>
         </section>
       </section>
-      <div
-        style={{
-          backgroundColor: "rgba(180, 180, 180, 0.300)",
-          paddingBottom: "30px",
-        }}
-      >
-        <div className="row footerrow">
-          <i className="fa-brands fa-twitter ficon"></i>
-          <i className="fa-brands fa-facebook-f ficon"></i>
-          <i className="fa-brands fa-instagram ficon"></i>
-          <i className="fa-solid fa-envelope ficon"></i>
-        </div>
-        <p
-          style={{
-            textAlign: "center",
-            position: "relative",
-            right: "15px",
-            paddingLeft: "50px",
-            paddingRight: "50px",
-          }}
-        >
-          © Copyright 2023 GoGrocers || Created by{" "}
-          <a
-            href="https://github.com/Akshay8789?tab=repositories"
-            style={{ color: "palevioletred" }}
-          >
-            Akshay Rajput
-          </a>
-        </p>
-      </div>
+      <Footer />
     </div>
   );
 }

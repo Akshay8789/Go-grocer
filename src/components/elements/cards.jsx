@@ -22,14 +22,22 @@ function Cards() {
     navigate("/" + a);
   };
   return (
-    <section className="cardshome">
-      <div className="row">
+    <section className="cardshome" style={{ padding: "40px 5%", textAlign: "center" }}>
+      <div style={{ marginBottom: "30px" }}>
+        <span className="auth-badge" style={{ fontSize: "13px", padding: "6px 16px" }}>
+          <i className="fas fa-leaf"></i> Shop By Category
+        </span>
+        <h2 style={{ fontSize: "32px", fontWeight: "800", color: "#14532d", marginTop: "8px" }}>
+          Freshness Delivered Daily
+        </h2>
+      </div>
+      <div className="row justify-content-center">
         <div className="col-lg-2 col-md-4 col-sm-6 colelement homepagecard col-6">
           <img
             className="cardimg"
             src={img1}
             onClick={() => click(cardnames[0])}
-            alt="pic"
+            alt="Vegetables"
           />
           <p className="cardtext">Vegetables</p>
         </div>
@@ -38,7 +46,7 @@ function Cards() {
             className="cardimg"
             src={img6}
             onClick={() => click(cardnames[5])}
-            alt="pic"
+            alt="Staples"
           />
           <p className="cardtext">Staples</p>
         </div>
@@ -47,7 +55,7 @@ function Cards() {
             className="cardimg"
             src={img5}
             onClick={() => click(cardnames[4])}
-            alt="pic"
+            alt="Fruits"
           />
           <p className="cardtext">Fruits</p>
         </div>
@@ -56,7 +64,7 @@ function Cards() {
             className="cardimg"
             src={img3}
             onClick={() => click(cardnames[2])}
-            alt="pic"
+            alt="Packaged Food"
           />
           <p className="cardtext">Packaged Food</p>
         </div>
@@ -65,16 +73,16 @@ function Cards() {
             className="cardimg"
             src={img4}
             onClick={() => click(cardnames[3])}
-            alt="pic"
+            alt="Cleaning Products"
           />
           <p className="cardtext">Cleaning Products</p>
         </div>
-        <div className="col-lg-2 col-md-4 col-sm-6 colelemen homepagecard col-6">
+        <div className="col-lg-2 col-md-4 col-sm-6 colelement homepagecard col-6">
           <img
             className="cardimg"
             src={img2}
             onClick={() => click(cardnames[1])}
-            alt="pic"
+            alt="Personal Care"
           />
           <p className="cardtext">Personal Care</p>
         </div>

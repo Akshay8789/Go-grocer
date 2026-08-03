@@ -17,56 +17,61 @@ function Footer() {
   return (
     <div className="footer">
       <div className="footertext">
-        <h3 className="brandtext">SUSCRIBE TO NEWSLETTER FOR OFFERS!</h3>
-        <form action="/">
+        <h3 className="brandtext" style={{ fontSize: "24px", marginBottom: "20px" }}>
+          SUBSCRIBE TO NEWSLETTER FOR EXCLUSIVE OFFERS!
+        </h3>
+        <form action="/" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
           <input
             type="email"
             className="suscribebox"
             name="email"
             autoComplete="on"
-            placeholder="email@org.com"
+            placeholder="Enter your email@org.com"
             id="emailinputbox"
           />
           <button className="emailbutton" type="submit">
-            <h5>SUBMIT</h5>
+            <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              Subscribe <i className="fas fa-paper-plane"></i>
+            </span>
           </button>
         </form>
-        <h3 style={{ paddingTop: "50px" }}>GoGrocers</h3>
+        <div style={{ paddingTop: "40px", textAlign: "center" }}>
+          <h2 style={{ fontSize: "28px", fontWeight: "800", color: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}>
+            <i className="fas fa-shopping-basket" style={{ color: "#4ade80" }}></i> GoGrocers
+          </h2>
+        </div>
         <p
           style={{
-            fontSize: "1.1em",
-            margin: "auto",
-            paddingLeft: "0px",
-            paddingRight: "10px",
-            paddingBottom: "50px",
+            fontSize: "15px",
+            lineHeight: "1.6",
+            maxWidth: "750px",
+            margin: "15px auto 30px",
+            color: "rgba(255, 255, 255, 0.85)",
+            textAlign: "center",
           }}
           className="textfooter"
         >
-          "Our brand provides the best quality grocery delivery, with carefully
-          selected products from trusted suppliers and experienced personal
-          shoppers. We offer flexible delivery options to fit busy schedules and
-          pride ourselves on exceptional customer service. Our goal is to
-          provide a stress-free grocery shopping experience with high-quality
-          products and friendly support.."
+          Our brand provides the best quality grocery delivery with carefully selected products from trusted suppliers. Enjoy flexible delivery options and exceptional customer service for a stress-free shopping experience.
         </p>
       </div>
       <div className="row footerrow">
-        <i className="fa-brands fa-twitter ficon"></i>
-        <i className="fa-brands fa-facebook-f ficon"></i>
-        <i className="fa-brands fa-instagram ficon"></i>
-        <i className="fa-solid fa-envelope ficon" onClick={Mailto}></i>
+        <i className="fa-brands fa-twitter ficon" title="Twitter"></i>
+        <i className="fa-brands fa-facebook-f ficon" title="Facebook"></i>
+        <i className="fa-brands fa-instagram ficon" title="Instagram"></i>
+        <i className="fa-solid fa-envelope ficon" onClick={Mailto} title="Email Us"></i>
       </div>
       <p
         style={{
           textAlign: "center",
-          paddingLeft: "50px",
-          paddingRight: "50px",
+          paddingTop: "20px",
+          color: "rgba(255, 255, 255, 0.7)",
+          fontSize: "14px",
         }}
       >
         © Copyright 2023 GoGrocers || Created by{" "}
         <a
           href="https://github.com/Akshay8789?tab=repositories"
-          style={{ color: "palevioletred" }}
+          style={{ color: "#4ade80", fontWeight: "700" }}
         >
           Akshay Rajput
         </a>

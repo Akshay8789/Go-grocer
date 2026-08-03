@@ -77,36 +77,39 @@ const Navbarcomp = () => {
 
   return (
     <div className="topnav" id="myTopnav">
-      <Link to="/" className="navitem">
-        <h1 className="navbrand">GoGrocers</h1>
+      <Link to="/" className="navitem" style={{ background: "transparent", padding: 0 }}>
+        <h1 className="navbrand">
+          <i className="fas fa-shopping-basket" style={{ color: "#ffffff", marginRight: "10px" }}></i>
+          GoGrocers
+        </h1>
       </Link>
-      <Link id="searchbar">
-        <form onSubmit={handleSearchButton} id="searchform">
+      <div id="searchbar" style={{ display: "flex", alignItems: "center" }}>
+        <form onSubmit={handleSearchButton} id="searchform" style={{ display: "flex", margin: 0 }}>
           <input
             autoComplete="off"
             type="text"
             className="search-bar"
-            placeholder="search"
+            placeholder="Search fresh groceries..."
             id="search"
           />
           <button className="search-barbutton" type="submit">
-            <img src={search} alt="search icon" id="searchicon" />
+            <i className="fas fa-search" style={{ color: "white" }}></i>
           </button>
         </form>
-      </Link>
+      </div>
       <Link to="/cart" className="navitem">
-        <img src={cart} alt="cart" className="navicon" />
-        CART
+        <i className="fas fa-shopping-cart" style={{ marginRight: "6px" }}></i>
+        Cart
       </Link>
       <Link to={loginLink} className="navitem">
         {authenticated === false ? (
           <>
-            <img src={login} alt="login" className="navicon" />
-            SIGN&nbsp;IN
+            <i className="fas fa-user-circle" style={{ marginRight: "6px" }}></i>
+            Sign In
           </>
         ) : (
           <>
-            <img src={login} alt="login" className="navicon" />
+            <i className="fas fa-user-check" style={{ marginRight: "6px" }}></i>
             {name}
           </>
         )}

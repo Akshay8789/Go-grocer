@@ -127,7 +127,7 @@ const Cart = () => {
           </div>
           <div
             className="row"
-            style={{ width: "70%", position: "relative", left: "1.25%" }}
+            style={{ width: "70%", margin: "20px auto 0 2%" }}
           >
             {cart.length > 0 && (
               <>
@@ -135,56 +135,48 @@ const Cart = () => {
                   <div
                     key={index}
                     className="col-lg-4 col-md-6 col-sm-12 colelement cardbg"
+                    style={{ padding: "16px" }}
                   >
-                    <div className="imgdiv" style={{ width: "120%" }}>
+                    <div className="imgdiv" style={{ width: "100%" }}>
                       <img
                         className="cardimgproduct"
                         src={item.src}
-                        alt="pic"
+                        alt={item.name}
                       />
                     </div>
-                    <p className="cardtextproduct" style={{ width: "120%" }}>
+                    <p className="cardtextproduct" style={{ width: "100%", fontSize: "16px", fontWeight: "700" }}>
                       {item.name}
                     </p>
-                    <div className="infodev" style={{ width: "120%" }}>
-                      <button
-                        className="cartbuttons"
-                        style={{ width: "3%" }}
-                        onClick={() => {
-                          updatecart({
-                            name: item.name,
-                          });
-                        }}
-                      >
-                        +
-                      </button>
-                      <button
-                        className="cartbuttons"
-                        style={{ width: "3%" }}
-                        disabled
-                      >
-                        <span>{item.frequency}</span>
-                      </button>
-                      <button
-                        className="cartbuttons"
-                        style={{ width: "3%" }}
-                        onClick={() => {
-                          updatecartdec({
-                            name: item.name,
-                          });
-                        }}
-                      >
-                        -
-                      </button>
-                      <div style={{ minWidth: "100px" }}>
+                    <div className="infodev" style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "10px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                        <button
+                          className="cartbuttons"
+                          onClick={() => {
+                            updatecartdec({
+                              name: item.name,
+                            });
+                          }}
+                        >
+                          -
+                        </button>
+                        <span style={{ fontWeight: "700", padding: "0 8px", fontSize: "15px" }}>{item.frequency}</span>
+                        <button
+                          className="cartbuttons"
+                          onClick={() => {
+                            updatecart({
+                              name: item.name,
+                            });
+                          }}
+                        >
+                          +
+                        </button>
+                      </div>
+                      <div>
                         <h4
                           className="productprice"
-                          style={{ display: "block", width: "120%" }}
+                          style={{ margin: 0, fontSize: "16px", fontWeight: "800", color: "#16a34a" }}
                         >
-                          <span style={{ marginRight: "5%" }}>
-                            {" "}
-                            Rs {item.frequency * item.priceint}
-                          </span>
+                          Rs {item.frequency * item.priceint}
                         </h4>
                       </div>
                     </div>
