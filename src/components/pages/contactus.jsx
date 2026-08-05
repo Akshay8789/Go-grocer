@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles.css";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../elements/navbar.jsx";
@@ -35,11 +35,14 @@ function ContactUs() {
     }, 3000);
   };
 
-  onAuthStateChanged(auth, (user) => {
-    if(user === null){
-      navigate("/");
-    }
-  });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user === null) {
+        navigate("/");
+      }
+    });
+    return () => unsubscribe();
+  }, [auth, navigate]);
 
 
   return (

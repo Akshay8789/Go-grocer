@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../elements/navbar.jsx";
 import img1 from "../../images/accmedia/001-order.png";
@@ -26,10 +26,12 @@ function DashBoard() {
     "profile/rewards",
   ];
 
-  onAuthStateChanged(auth, (user) => {
-    if (user === null) 
-    navigate("/login");
-  });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user === null) navigate("/login");
+    });
+    return () => unsubscribe();
+  }, [auth, navigate]);
 
   function logoutfunc() {
     signOut(auth)

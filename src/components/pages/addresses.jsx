@@ -111,11 +111,14 @@ function Addresses() {
     fetchAddress(uid);
   }, []);
 
-  onAuthStateChanged(auth, (user) => {
-    if(user === null){
-      navigate("/");
-    }
-  });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user === null) {
+        navigate("/");
+      }
+    });
+    return () => unsubscribe();
+  }, [auth, navigate]);
 
   const removeAddress = async (indexToRemove) => {
     const updatedAddresses = addresses.filter(

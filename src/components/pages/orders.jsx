@@ -77,23 +77,26 @@ function Orders() {
     getorderdata();
   }, [query]);
 
-  onAuthStateChanged(auth, (user) => {
-    if (user === null) {
-      toast.error("Please login to continue", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
-    }
-  });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user === null) {
+        toast.error("Please login to continue", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
+      }
+    });
+    return () => unsubscribe();
+  }, [auth, navigate]);
 
   const formatOrderTime = (ordertime) => {
     if (ordertime instanceof Date) {
