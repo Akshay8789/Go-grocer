@@ -74,7 +74,7 @@ function Search() {
                           style={{ scale: "0.8" }}
                         >
                           {
-                            cart.find((item) => item.name === item.name)
+                            cart.find((cartItem) => cartItem.name === item.name)
                               ?.frequency
                           }
                         </button>
