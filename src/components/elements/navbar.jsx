@@ -3,49 +3,56 @@ import { Link } from "react-router-dom";
 import login from "../../images/user.png";
 import cart from "../../images/cart.png";
 import search from "../../images/search.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { app } from "../../firebase-config.js";
 import { toast, ToastContainer } from "react-toastify";
+import { MyContext } from "../../App.js";
 
 const Navbarcomp = () => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const context = useContext(MyContext);
+  const [authenticated, setAuthenticated] = useState(context?.authenticated || false);
   const [loginLink, setLoginLink] = useState("/login");
   const [name, setName] = useState("You");
-  const auth = getAuth(app);
+  const auth = context?.auth || getAuth(app);
 
   useEffect(() => {
-    onLoad();
-    document.getElementById("search").addEventListener("keydown", function (e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        handleSearchButton(e);
-      }
-    });
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setAuthenticated(true);
-        setLoginLink("/dashboard");
-        setName(user.displayName);
-      } else {
-        setAuthenticated(false);
-        setLoginLink("/login");
-      }
-    });
-  }, [auth]);
-
-  async function onLoad() {
-    const name = localStorage.getItem("name");
-    if (name && name !== "" && name !== "null") {
-      const truncatedName = name.substring(0, 20);
-      setName(truncatedName);
+    const searchInput = document.getElementById("search");
+    if (searchInput) {
+      const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          handleSearchButton(e);
+        }
+      };
+      searchInput.addEventListener("keydown", handleKeyDown);
+      return () => searchInput.removeEventListener("keydown", handleKeyDown);
     }
-    if (localStorage.getItem("authenticated") === "true") {
-      setAuthenticated("true");
+  }, []);
+
+  useEffect(() => {
+    if (context?.user) {
+      setAuthenticated(true);
       setLoginLink("/dashboard");
+      if (context.user.displayName) {
+        setName(context.user.displayName.substring(0, 20));
+      }
+    } else {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setAuthenticated(true);
+          setLoginLink("/dashboard");
+          if (user.displayName) {
+            setName(user.displayName.substring(0, 20));
+          }
+        } else {
+          setAuthenticated(false);
+          setLoginLink("/login");
+        }
+      });
+      return () => unsubscribe();
     }
-  }
+  }, [auth, context?.user]);
 
   async function handleSearchButton(e) {
     e.preventDefault();

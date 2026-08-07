@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import $ from "jquery";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/pages/home";
@@ -24,7 +24,7 @@ import Checkout from "./components/pages/checkout";
 import Orders from "./components/pages/orders";
 import Search from "./components/pages/search";
 import Order from "./components/pages/order";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { app } from "./firebase-config.js";
 import PDF from "./components/elements/pdf.jsx";
 export const MyContext = createContext();
@@ -33,7 +33,21 @@ const App = () => {
   const auth = getAuth(app);
   const [cart, setcart] = useState([]);
   const [discount, setDiscount] = useState(0);
-  const uid = localStorage.getItem("uid");
+  const [user, setUser] = useState(null);
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        setAuthenticated(true);
+      } else {
+        setUser(null);
+        setAuthenticated(false);
+      }
+    });
+    return () => unsubscribe();
+  }, [auth]);
 
   const updatecart = async (item) => {
     const existingItemIndex = cart.findIndex(
@@ -49,6 +63,7 @@ const App = () => {
       updatedCart = [newItem, ...cart];
     }
     setcart(updatedCart);
+    const uid = user?.uid || auth.currentUser?.uid;
     await UpdateCart(uid, updatedCart);
   };
 
@@ -65,15 +80,15 @@ const App = () => {
         updatedCart.splice(existingItemIndex, 1);
       }
       setcart(updatedCart);
+      const uid = user?.uid || auth.currentUser?.uid;
       UpdateCart(uid, updatedCart);
     }
   };
 
-  const storedToken = localStorage.getItem("token");
   const hasAccessToken =
-    !!storedToken &&
-    storedToken !== "[object Promise]" &&
-    localStorage.getItem("authenticated") === "true";
+    authenticated ||
+    !!user ||
+    (localStorage.getItem("authenticated") === "true");
 
   return (
     <div>
@@ -86,6 +101,10 @@ const App = () => {
           discount,
           setDiscount,
           auth,
+          user,
+          setUser,
+          authenticated,
+          setAuthenticated,
         }}
       >
         <Router>
