@@ -5,13 +5,15 @@ import {
     getDoc,
     updateDoc,
   } from "firebase/firestore";
+  import { getAuth } from "firebase/auth";
   import { app } from "../../firebase-config";
   
   async function SetUser(uid, Addresses) {
     try {
+      const targetUid = getAuth(app).currentUser?.uid || uid;
       const db = getFirestore(app);
       const usersCollection = collection(db, "users");
-      const userDocRef = doc(usersCollection, uid);
+      const userDocRef = doc(usersCollection, targetUid);
       const userDocSnapshot = await getDoc(userDocRef);
   
       if (userDocSnapshot.exists()) {

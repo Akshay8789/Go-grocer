@@ -5,13 +5,15 @@ import {
   getDoc,
   setDoc,
 } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import { app } from "../../firebase-config";
 
 async function AddUserOrdertoCompleted(userid, order) {
   try {
+    const uid = getAuth(app).currentUser?.uid || userid;
     const db = getFirestore(app);
     const ordersCollection = collection(db, "orders");
-    const userDocRef = doc(ordersCollection, userid);
+    const userDocRef = doc(ordersCollection, uid);
     const userDocSnapshot = await getDoc(userDocRef);
     const existingData = userDocSnapshot.exists() ? userDocSnapshot.data() : {};
     const updatedOrders = [...(existingData.completed || []), order];
@@ -30,10 +32,11 @@ async function AddUserOrdertoCompleted(userid, order) {
 
 async function MarkOrderAsComplete(userid, order) {
   try {
-    await AddUserOrdertoCompleted(userid, order);
+    const uid = getAuth(app).currentUser?.uid || userid;
+    await AddUserOrdertoCompleted(uid, order);
     const db = getFirestore(app);
     const ordersCollection = collection(db, "orders");
-    const userDocRef = doc(ordersCollection, userid);
+    const userDocRef = doc(ordersCollection, uid);
     const userDocSnapshot = await getDoc(userDocRef);
     const existingData = userDocSnapshot.exists() ? userDocSnapshot.data() : {};
     const updatedOrders = existingData.onorder.filter(
