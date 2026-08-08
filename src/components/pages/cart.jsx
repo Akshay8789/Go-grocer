@@ -7,7 +7,28 @@ import GetUser from "../firestore.operations.files/getuser";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import emptybasket from "../../images/accmedia/basketempty.png"
+import emptybasket from "../../images/accmedia/basketempty.png";
+import pp from "../../images/packaged_product images/ppimg";
+import cp from "../../images/cleaning_products images/cpimg";
+import pc from "../../images/personal_care images/pcimg";
+import staples from "../../images/staples images/stapleimg";
+import vegetables from "../../images/vegetable images/vegimg";
+import fruit from "../../images/fruits images/fruitimg";
+
+const catalog = [...pp, ...cp, ...pc, ...staples, ...vegetables, ...fruit];
+
+const getCatalogPrice = (item) => {
+  const catalogItem = catalog.find((p) => p.name === item.name);
+  return catalogItem ? catalogItem.priceint : item.priceint;
+};
+
+const isVegItem = (item) => {
+  const catalogItem = catalog.find((p) => p.name === item.name);
+  if (catalogItem) {
+    return catalogItem.type === "veg";
+  }
+  return item.type === "veg";
+};
 
 const Cart = () => {
   const { setcart, cart } = useContext(MyContext);
@@ -43,12 +64,12 @@ const Cart = () => {
 
 
   const totalPrice = cart.reduce(
-    (sum, item) => sum + item.priceint * item.frequency,
+    (sum, item) => sum + getCatalogPrice(item) * item.frequency,
     0
   );
   const vegPrice = cart.reduce((sum, item) => {
-    if (item.type === "veg") {
-      return sum + item.priceint * item.frequency;
+    if (isVegItem(item)) {
+      return sum + getCatalogPrice(item) * item.frequency;
     } else {
       return sum;
     }
@@ -176,7 +197,7 @@ const Cart = () => {
                           className="productprice"
                           style={{ margin: 0, fontSize: "16px", fontWeight: "800", color: "#16a34a" }}
                         >
-                          Rs {item.frequency * item.priceint}
+                          Rs {item.frequency * getCatalogPrice(item)}
                         </h4>
                       </div>
                     </div>
@@ -220,18 +241,16 @@ const Cart = () => {
             value={selectedCoupon}
             onChange={(value) => {
               setselectedCoupon(value);
-              console.log(
-                value === optionscoupon[0] ? 50 + totalPrice * 0.1 : discount
-              );
-              setDiscount(
-                value === optionscoupon[0]
+              const couponVal = value ? value.value : "";
+              const calculatedDiscount =
+                couponVal === optionscoupon[0].value
                   ? 50 + Math.round(totalPrice * 0.1 * 100) / 100
-                  : value === optionscoupon[1]
+                  : couponVal === optionscoupon[1].value
                   ? Math.round(totalPrice * 0.1 * 100) / 100
-                  : optionscoupon[2]
+                  : couponVal === optionscoupon[2].value
                   ? Math.round(vegPrice * 0.2 * 100) / 100
-                  : discount
-              );
+                  : 0;
+              setDiscount(calculatedDiscount);
             }}
             placeholder="Enter coupon"
           />

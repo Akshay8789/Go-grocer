@@ -10,6 +10,19 @@ import { nanoid } from "nanoid";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { app } from "../../firebase-config.js";
 import { useNavigate } from "react-router-dom";
+import pp from "../../images/packaged_product images/ppimg";
+import cp from "../../images/cleaning_products images/cpimg";
+import pc from "../../images/personal_care images/pcimg";
+import staples from "../../images/staples images/stapleimg";
+import vegetables from "../../images/vegetable images/vegimg";
+import fruit from "../../images/fruits images/fruitimg";
+
+const catalog = [...pp, ...cp, ...pc, ...staples, ...vegetables, ...fruit];
+
+const getCatalogPrice = (item) => {
+  const catalogItem = catalog.find((p) => p.name === item.name);
+  return catalogItem ? catalogItem.priceint : item.priceint;
+};
 
 function Checkout() {
   const [cart, setCart] = useState([]);
@@ -32,7 +45,7 @@ function Checkout() {
         setAddresses(user.address);
         setCart(usercart.cart);
         const totalPrice = usercart.cart.reduce((sum, item) => {
-          return sum + item.priceint * item.frequency;
+          return sum + getCatalogPrice(item) * item.frequency;
         }, 0);
         setTotalPrice(totalPrice);
       } catch (err) {
@@ -77,14 +90,28 @@ function Checkout() {
     const uid = localStorage.getItem("uid");
     const currentDate = new Date();
     const orderid = nanoid(10);
+
+    const validatedCart = cart.map((item) => ({
+      ...item,
+      priceint: getCatalogPrice(item),
+    }));
+
+    const validatedTotalPrice = validatedCart.reduce(
+      (sum, item) => sum + item.priceint * item.frequency,
+      0
+    );
+
+    const maxPossibleDiscount = Math.max(0, validatedTotalPrice + 50);
+    const validatedDiscount = Math.min(Math.max(0, discount || 0), maxPossibleDiscount);
+
     const order = {
       deliveryaddress: selectedAddress,
-      orderdetail: cart,
-      orderbillamount: totalPrice,
+      orderdetail: validatedCart,
+      orderbillamount: validatedTotalPrice,
       ordertime: currentDate,
       id: orderid,
-      totalPrice: totalPrice,
-      discount: discount,
+      totalPrice: validatedTotalPrice,
+      discount: validatedDiscount,
     };
     const isAddressSelected = selectedAddress !== "";
 
@@ -102,7 +129,7 @@ function Checkout() {
           theme: "light",
         });
         const redirectToNewRoute = () => {
-          window.location.href = "/";
+          navigate("/");
         };
         setTimeout(() => {
           redirectToNewRoute();
@@ -193,7 +220,7 @@ function Checkout() {
                       <td>
                         {item.frequency} units each {item.weight}
                       </td>
-                      <td>₹&nbsp;{item.priceint * item.frequency}&nbsp;/-</td>
+                      <td>₹&nbsp;{getCatalogPrice(item) * item.frequency}&nbsp;/-</td>
                     </tr>
                   </>
                 ))}
