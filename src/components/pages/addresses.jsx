@@ -72,6 +72,37 @@ function Addresses() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const phoneRegex = /^[6-9]\d{9}$/;
+    const pincodeRegex = /^[1-9][0-9]{5}$/;
+
+    if (!phoneRegex.test((formData.phonenumber || "").trim())) {
+      toast.error("Please enter a valid 10-digit phone number", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+
+    if (!pincodeRegex.test((formData.pincode || "").toString().trim())) {
+      toast.error("Please enter a valid 6-digit pincode", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+
     const uid = localStorage.getItem("uid");
     const address = formData;
     try {

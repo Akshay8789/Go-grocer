@@ -45,6 +45,22 @@ function EditProfile() {
     e.preventDefault();
     const name = e.target.name.value;
     const phonenumber = e.target.phonenumber.value;
+    const phoneRegex = /^[6-9]\d{9}$/;
+
+    if (!phoneRegex.test((phonenumber || "").trim())) {
+      toast.error("Please enter a valid 10-digit phone number", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
+    }
+
     const uid = localStorage.getItem("uid");
     await UpdateUser(uid, name, phonenumber);
     toast.success("Updated", {

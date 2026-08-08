@@ -1,5 +1,5 @@
 import "../../styles.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import login from "../../images/user.png";
 import cart from "../../images/cart.png";
 import search from "../../images/search.png";
@@ -10,25 +10,14 @@ import { toast, ToastContainer } from "react-toastify";
 import { MyContext } from "../../App.js";
 
 const Navbarcomp = () => {
+  const navigate = useNavigate();
   const context = useContext(MyContext);
   const [authenticated, setAuthenticated] = useState(context?.authenticated || false);
   const [loginLink, setLoginLink] = useState("/login");
   const [name, setName] = useState("You");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isResponsive, setIsResponsive] = useState(false);
   const auth = context?.auth || getAuth(app);
-
-  useEffect(() => {
-    const searchInput = document.getElementById("search");
-    if (searchInput) {
-      const handleKeyDown = (e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          handleSearchButton(e);
-        }
-      };
-      searchInput.addEventListener("keydown", handleKeyDown);
-      return () => searchInput.removeEventListener("keydown", handleKeyDown);
-    }
-  }, []);
 
   useEffect(() => {
     if (context?.user) {
@@ -56,8 +45,7 @@ const Navbarcomp = () => {
 
   async function handleSearchButton(e) {
     e.preventDefault();
-    const search = document.getElementById("search").value;
-    if (search === "") {
+    if (searchQuery.trim() === "") {
       toast.warning("Please enter a search query", {
         position: "top-right",
         autoClose: 5000,
@@ -69,21 +57,16 @@ const Navbarcomp = () => {
         theme: "light",
       });
     } else {
-      window.location.href = `/search?name=${search}`;
+      navigate(`/search?name=${encodeURIComponent(searchQuery.trim())}`);
     }
   }
 
   function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
-    } else {
-      x.className = "topnav";
-    }
+    setIsResponsive((prev) => !prev);
   }
 
   return (
-    <div className="topnav" id="myTopnav">
+    <div className={`topnav ${isResponsive ? "responsive" : ""}`} id="myTopnav">
       <Link to="/" className="navitem" style={{ background: "transparent", padding: 0 }}>
         <h1 className="navbrand">
           <i className="fas fa-shopping-basket" style={{ color: "#ffffff", marginRight: "10px" }}></i>
@@ -98,6 +81,8 @@ const Navbarcomp = () => {
             className="search-bar"
             placeholder="Search fresh groceries..."
             id="search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button className="search-barbutton" type="submit">
             <i className="fas fa-search" style={{ color: "white" }}></i>
